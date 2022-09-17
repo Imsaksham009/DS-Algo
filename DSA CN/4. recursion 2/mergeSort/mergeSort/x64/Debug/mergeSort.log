@@ -1,0 +1,17 @@
+﻿  mergeSort.cpp
+D:\saksham\educt\DSA\DSA CN\recursion 2\mergeSort\mergeSort\mergeSort.cpp(13,14): error C2131: expression did not evaluate to a constant
+D:\saksham\educt\DSA\DSA CN\recursion 2\mergeSort\mergeSort\mergeSort.cpp(13,14): message : failure was caused by a read of a variable outside its lifetime
+D:\saksham\educt\DSA\DSA CN\recursion 2\mergeSort\mergeSort\mergeSort.cpp(13,14): message : see usage of 'size1'
+D:\saksham\educt\DSA\DSA CN\recursion 2\mergeSort\mergeSort\mergeSort.cpp(14,14): error C2131: expression did not evaluate to a constant
+D:\saksham\educt\DSA\DSA CN\recursion 2\mergeSort\mergeSort\mergeSort.cpp(14,14): message : failure was caused by a read of a variable outside its lifetime
+D:\saksham\educt\DSA\DSA CN\recursion 2\mergeSort\mergeSort\mergeSort.cpp(14,14): message : see usage of 'size2'
+D:\saksham\educt\DSA\DSA CN\recursion 2\mergeSort\mergeSort\mergeSort.cpp(15,14): error C2131: expression did not evaluate to a constant
+D:\saksham\educt\DSA\DSA CN\recursion 2\mergeSort\mergeSort\mergeSort.cpp(15,14): message : failure was caused by a read of a variable outside its lifetime
+D:\saksham\educt\DSA\DSA CN\recursion 2\mergeSort\mergeSort\mergeSort.cpp(15,14): message : see usage of 'size3'
+D:\saksham\educt\DSA\DSA CN\recursion 2\mergeSort\mergeSort\mergeSort.cpp(18,17): error C3863: array type 'int [size1]' is not assignable
+D:\saksham\educt\DSA\DSA CN\recursion 2\mergeSort\mergeSort\mergeSort.cpp(20,17): error C3863: array type 'int [size2]' is not assignable
+D:\saksham\educt\DSA\DSA CN\recursion 2\mergeSort\mergeSort\mergeSort.cpp(28,21): error C3863: array type 'int [size3]' is not assignable
+D:\saksham\educt\DSA\DSA CN\recursion 2\mergeSort\mergeSort\mergeSort.cpp(34,21): error C3863: array type 'int [size3]' is not assignable
+D:\saksham\educt\DSA\DSA CN\recursion 2\mergeSort\mergeSort\mergeSort.cpp(42,17): error C3863: array type 'int [size3]' is not assignable
+D:\saksham\educt\DSA\DSA CN\recursion 2\mergeSort\mergeSort\mergeSort.cpp(49,17): error C3863: array type 'int [size3]' is not assignable
+D:\saksham\educt\DSA\DSA CN\recursion 2\mergeSort\mergeSort\mergeSort.cpp(88,14): warning C4154: deletion of an array expression; conversion to pointer supplied

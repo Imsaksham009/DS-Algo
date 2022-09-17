@@ -1,0 +1,3 @@
+        // ~Polynomial(){
+        //     delete [] deg;
+        // }
