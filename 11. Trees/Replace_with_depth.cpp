@@ -1,3 +1,4 @@
+#include <climits>
 #include <iostream>
 #include <queue>
 #include <vector>
@@ -44,22 +45,43 @@ TreeNode<int>* takeInputLevelWise() {
     return root;
 }
 
-bool isPresent(TreeNode<int>* root, int x) {
-    // Write your code here
-    if(root->data == x)
-        return true;
-    
-    for(int i{0};i<root->children.size();i++){
-          bool ans =  isPresent(root->children[i],x);
-        	if(ans)
-                return true;
+void printLevelATNewLine(TreeNode<int>* root) {
+    queue<TreeNode<int>*> q;
+    q.push(root);
+    q.push(NULL);
+    while (!q.empty()) {
+        TreeNode<int>* first = q.front();
+        q.pop();
+        if (first == NULL) {
+            if (q.empty()) {
+                break;
+            }
+            cout << endl;
+            q.push(NULL);
+            continue;
+        }
+        cout << first->data << " ";
+        for (int i = 0; i < first->children.size(); i++) {
+            q.push(first->children[i]);
+        }
     }
-    return false;
+}
+
+void helper(TreeNode<int>* root,int level = 0){
+    root->data = level;
+    for(int i{0};i<root->children.size();i++) helper(root->children[i],level + 1);
+        
+}
+
+void replaceWithDepthValue(TreeNode<int>* root) {
+    // Write your code here
+    if(root == NULL)
+        return;
+    helper(root);
 }
 
 int main() {
     TreeNode<int>* root = takeInputLevelWise();
-    int x;
-    cin >> x;
-    cout << (isPresent(root, x) ? "true" : "false");
+    replaceWithDepthValue(root);
+    printLevelATNewLine(root);
 }

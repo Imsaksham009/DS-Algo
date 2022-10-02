@@ -19,6 +19,7 @@ class TreeNode {
 };
 
 
+
 TreeNode<int>* takeInputLevelWise() {
     int rootData;
     cin >> rootData;
@@ -44,22 +45,31 @@ TreeNode<int>* takeInputLevelWise() {
     return root;
 }
 
-bool isPresent(TreeNode<int>* root, int x) {
+
+
+bool areIdentical(TreeNode<int> *root1, TreeNode<int> * root2) {
     // Write your code here
-    if(root->data == x)
-        return true;
+    if(root1 == NULL && root2 == NULL)
+        return false;
+
     
-    for(int i{0};i<root->children.size();i++){
-          bool ans =  isPresent(root->children[i],x);
-        	if(ans)
-                return true;
+	int i = 0;
+    int j = 0;
+    bool ans = false;
+    while(i<root1->children.size() && j<root2->children.size()){
+        ans = areIdentical(root1->children[i],root2->children[j]);
+        if(ans == false)
+            return false;
+        i++;
+        j++;
     }
-    return false;
+    if(root1->data == root2->data && root1->children.size() == root2->children.size())
+        ans = true;
+    return ans;
 }
 
 int main() {
-    TreeNode<int>* root = takeInputLevelWise();
-    int x;
-    cin >> x;
-    cout << (isPresent(root, x) ? "true" : "false");
+    TreeNode<int>* root1 = takeInputLevelWise();
+    TreeNode<int>* root2 = takeInputLevelWise();
+    cout << (areIdentical(root1, root2) ? "true" : "false");
 }

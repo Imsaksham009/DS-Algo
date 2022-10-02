@@ -18,7 +18,6 @@ class TreeNode {
     }
 };
 
-
 TreeNode<int>* takeInputLevelWise() {
     int rootData;
     cin >> rootData;
@@ -44,22 +43,38 @@ TreeNode<int>* takeInputLevelWise() {
     return root;
 }
 
-bool isPresent(TreeNode<int>* root, int x) {
-    // Write your code here
-    if(root->data == x)
-        return true;
-    
-    for(int i{0};i<root->children.size();i++){
-          bool ans =  isPresent(root->children[i],x);
-        	if(ans)
-                return true;
+TreeNode<int>* helper(TreeNode<int>* root, int x){
+    TreeNode<int>* ans = root;
+    for(int i{0};i<root->children.size();i++)
+    {
+        TreeNode<int>* smallAns = helper(root->children[i],x);
+        if(smallAns->data > x && (ans->data == x || smallAns->data < ans->data || ans->data < x))
+      		ans = smallAns;
     }
-    return false;
+    
+    return ans;
+}
+
+TreeNode<int>* getNextLargerElement(TreeNode<int>* root, int x) {
+    // Write your code here
+    if(root == NULL)
+        return 0;
+    
+    TreeNode<int>* ans = helper(root,x);
+    
+    if(ans->data <= x)
+        return NULL;
+    return ans;
+    
 }
 
 int main() {
     TreeNode<int>* root = takeInputLevelWise();
     int x;
     cin >> x;
-    cout << (isPresent(root, x) ? "true" : "false");
+    TreeNode<int>* ans = getNextLargerElement(root, x);
+
+    if (ans != NULL) {
+        cout << ans->data;
+    }
 }
