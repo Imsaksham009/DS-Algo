@@ -100,9 +100,6 @@ void insertDuplicateNode(BinaryTreeNode<int> *root) {
     
     insertDuplicateNode(prevLeft);
     insertDuplicateNode(root->right);
-    
-    
-    
 }
 
 int main() {
