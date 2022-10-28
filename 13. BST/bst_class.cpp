@@ -44,14 +44,14 @@ BinaryTreeNode<int> *takeInput()
             q.push(leftNode);
         }
 
-        cin >> rightChild;
-        if (rightChild != -1)
-        {
-            BinaryTreeNode<int> *rightNode =
-                new BinaryTreeNode<int>(rightChild);
-            currentNode->right = rightNode;
-            q.push(rightNode);
-        }
+    cin >> rightChild;
+    if (rightChild != -1)
+    {
+        BinaryTreeNode<int> *rightNode =
+            new BinaryTreeNode<int>(rightChild);
+        currentNode->right = rightNode;
+        q.push(rightNode);
+    }
     }
     return root;
 }
