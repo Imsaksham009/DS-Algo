@@ -123,4 +123,5 @@ int main() {
         cout << head->data << " ";
         head = head->next;
     }
+    return 0;
 }
