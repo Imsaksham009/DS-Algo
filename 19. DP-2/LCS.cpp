@@ -3,7 +3,6 @@
 #include <vector>
 using namespace std;
 
-
 int lcs(string s, string t)
 {
     if (s.size() == 0 || t.size() == 0)
@@ -24,8 +23,8 @@ int lcs_mem(string s, string t, vector<vector<int>> &dp)
     int m = s.size();
     int n = t.size();
 
-    if(m == 0 || n == 0)
-     return 0;
+    if (m == 0 || n == 0)
+        return 0;
 
     if (dp[m][n] != -1)
         return dp[m][n];
@@ -35,14 +34,49 @@ int lcs_mem(string s, string t, vector<vector<int>> &dp)
         ans = 1 + lcs_mem(s.substr(1), t.substr(1), dp);
     else
     {
-        int a = lcs_mem(s.substr(1),t,dp);
-        int b = lcs_mem(s,t.substr(1),dp);
-        int c = lcs_mem(s.substr(1),t.substr(1),dp);
-        ans = max(a,max(b,c));
+        int a = lcs_mem(s.substr(1), t, dp);
+        int b = lcs_mem(s, t.substr(1), dp);
+        int c = lcs_mem(s.substr(1), t.substr(1), dp);
+        ans = max(a, max(b, c));
     }
 
     dp[m][n] = ans;
     return dp[m][n];
+}
+
+int lcs_dp(string s, string t)
+{
+    int m = s.size();
+    int n = t.size();
+
+    vector<vector<int>> dp1(m + 1);
+
+    for (int i{0}; i <= m; i++)
+    {
+        dp1[i] = vector<int>(n + 1);
+    }
+
+    // fill horizontally first row
+    for (int i{0}; i <= n; i++)
+        dp1[0][i] = 0;
+    // fill vertically first col
+    for (int i{0}; i <= m; i++)
+        dp1[i][0] = 0;
+
+    for (int i{1}; i <= m; i++)
+    {
+        for (int j{1}; j <= n; j++)
+        {
+            if (s[i - 1] == t[j - 1])
+            {
+                dp1[i][j] = 1 + max(dp1[i - 1][j - 1], max(dp1[i - 1][j], dp1[i][j - 1]));
+            }
+            else
+                dp1[i][j] = max(dp1[i - 1][j - 1], max(dp1[i - 1][j], dp1[i][j - 1]));
+        }
+    }
+
+    return dp1[m][n];
 }
 
 int main()
@@ -60,7 +94,8 @@ int main()
             dp[i][j] = -1;
     }
     dp[0][0] = 0;
-    cout << lcs(s, t)<<endl;
-    cout << lcs_mem(s, t, dp)<<endl;
+    cout << lcs(s, t) << endl;
+    cout << lcs_mem(s, t, dp) << endl;
+    cout << lcs_dp(s, t) << endl;
     return 0;
 }
